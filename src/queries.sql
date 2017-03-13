@@ -10,7 +10,8 @@ CREATE TABLE  family_member(
 	id 	BIGSERIAL PRIMARY KEY,
 	name 	varchar(30) not null,
 	surname varchar(60) not null
-	--parents_id BIGSERIAL references parents(id)
+	birht_date
+	death_date
 );
 
 CREATE TABLE  parents(
