@@ -5,16 +5,16 @@ Created on 13.03.2017
 '''
 from config import config
 import psycopg2
-def connect():
+
+def connect(query):
     conn = None
     try:
         params = config()
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
-        print('PostgreSQL database version:')
-        cur.execute('SELECT * from version()')
-        db_version = cur.fetchone()
-        print(db_version)
+        cur.execute(query)
+        db_output = cur.fetchall()
+        print(db_output)
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
