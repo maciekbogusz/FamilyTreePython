@@ -2,8 +2,6 @@ select * from family_member;
 select * from parents;
 
 insert into family_member (id, name, surname) values (nextval('primary_key_seq'), 'Krzysztof', 'Kowalski');
-
-
 insert into parents (id,name, surname, child_id) values(nextval('primary_key_seq'),'Katarzyna','Kowalski', 2);
 
 
@@ -31,5 +29,5 @@ CREATE SEQUENCE primary_key_seq
 	NO MAXVALUE
 	CACHE 1;
 
-select * from family_member;
+
 
