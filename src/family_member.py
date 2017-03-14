@@ -5,7 +5,7 @@ Created on 07.03.2017
 '''
 import config
 from connect import connect
-
+from add_record import add_child
 
 class family_member:
 #checker is set to distinguish if person is a child or a parent
@@ -49,20 +49,9 @@ def ancestors(
                     result = result + ancestors(family, parent)
         print result
     return [] 
-
-def insert_child(
-        person,
-        cursor
-        ):
-    name = person.getNames()
-    surname = person.getSurname()
-    query =  "INSERT INTO family_member (id, name, surname) VALUES (nextval('primary_key_seq'),%s, %s);"
-    data = (name, surname)
-    cursor.execute(query, data)
-
             
 person1 = family_member("Maciej", "Kowalski", True)
-person1.addDates("07.01.1989", None)
+person1.addDates("1989-01-07", None)
 
 person2 = family_member("Taduesz", "Kowalski", False)
 person2.addDates("01.01.1972",None)
@@ -78,6 +67,6 @@ for key, value in dict_family.items():
     
 conn = connect()
 cursor = conn.cursor()
-insert_child(person1, cursor)
+add_child(person1, cursor)
 conn.commit()
     
