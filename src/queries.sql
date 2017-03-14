@@ -1,28 +1,19 @@
-select * from family_member;
-select * from parents;
-
-insert into family_member (id, name, surname) values (nextval('primary_key_seq'), 'Krzysztof', 'Kowalski');
-insert into parents (id,name, surname, child_id) values(nextval('primary_key_seq'),'Katarzyna','Kowalski', 2);
-
-
-
 CREATE TABLE  family_member(
 	id 	BIGSERIAL PRIMARY KEY,
 	name 	varchar(30) not null,
-	surname varchar(60) not null
-	birht_date
-	death_date
+	surname varchar(60) not null,
+	birht_date date,
+	death_date date
 );
 
 CREATE TABLE  parents(
 	id 	BIGSERIAL PRIMARY KEY,
 	name 	varchar(30) not null,
 	surname varchar(60) not null,
-	child_id BIGSERIAL references family_member(id)
+	child_id BIGSERIAL references family_member(id),
+	birht_date date,
+	death_date date
 );
-
-
-drop table parents
 
 CREATE SEQUENCE primary_key_seq 
 	start 1
