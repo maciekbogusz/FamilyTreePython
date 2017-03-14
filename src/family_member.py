@@ -9,8 +9,9 @@ from connect import connect
 
 class family_member:
 #checker is set to distinguish if person is a child or a parent
-    def __init__(self, name, checker):
+    def __init__(self, name, surname, checker):
         self.name = name 
+        self.surname = surname
         self.checker = checker
         
                    
@@ -23,6 +24,9 @@ class family_member:
     
     def getNames(self):
         return self.name
+    
+    def getSurname(self):
+        return self.surname    
     
     def getCheck(self):
         return self.checker   
@@ -45,15 +49,25 @@ def ancestors(
                     result = result + ancestors(family, parent)
         print result
     return [] 
-   
+
+def insert_child(
+        person,
+        cursor
+        ):
+    name = person.getNames()
+    surname = person.getSurname()
+    query =  "INSERT INTO family_member (id, name, surname) VALUES (nextval('primary_key_seq'),%s, %s);"
+    data = (name, surname)
+    cursor.execute(query, data)
+
             
-person1 = family_member("Maciej", True)
+person1 = family_member("Maciej", "Kowalski", True)
 person1.addDates("07.01.1989", None)
 
-person2 = family_member("Taduesz", False)
+person2 = family_member("Taduesz", "Kowalski", False)
 person2.addDates("01.01.1972",None)
 
-person3 = family_member("Katarzyna", False)
+person3 = family_member("Katarzyna", "Kowalski", False)
 person3.addDates("10.06.1974", None)
 
 
@@ -62,4 +76,8 @@ dict_family = { person1.getNames(): [person2.getNames(), person3.getNames()] }
 for key, value in dict_family.items():    
     ancestors(dict_family, key)
     
+conn = connect()
+cursor = conn.cursor()
+insert_child(person1, cursor)
+conn.commit()
     

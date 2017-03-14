@@ -11,12 +11,6 @@ def connect():
     try:
         params = config()
         conn = psycopg2.connect(**params)
+        return conn
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
-    finally:
-        if conn is not None:
-            conn.close()
-            print('Database connection closed')
-
-if __name__ == '__main__':
-    connect()

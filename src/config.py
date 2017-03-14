@@ -5,9 +5,6 @@ Created on 09.03.2017
 '''
 from ConfigParser import ConfigParser
 
-
-
-
 def config(filename='database.ini', section='postgresql'):
     parser = ConfigParser()
     parser.read(filename)
