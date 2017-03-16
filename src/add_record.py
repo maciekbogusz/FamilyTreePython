@@ -9,6 +9,12 @@ def add_child(
     data = (name, surname, birthdate)
     cursor.execute(query, data)
 
+def add_relationship(
+        person,
+        cursor      
+        ):
+    name = person.getNames()
+    
 
 def add_parents(
         child,
@@ -22,3 +28,10 @@ def add_parents(
     data = (name, surname, birthdate)
     cursor.execute(query, data)
     
+def select_person(
+        person, 
+        cursor
+        ):
+    data = person.getNames()    
+    query = 'SELECT id FROM individuals WHERE name LIKE %s'
+    cursor.execute(query, data)
