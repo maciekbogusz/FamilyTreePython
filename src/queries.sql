@@ -30,3 +30,10 @@ CREATE SEQUENCE primary_key_seq
 	NO MAXVALUE
 	CACHE 1;
 
+
+insert into roles (role_code, role_description) values (1, 'Son');
+insert into roles (role_code, role_description) values (2, 'Daughter');
+insert into roles (role_code, role_description) values (3, 'Father');
+insert into roles (role_code, role_description) values (5, 'Mother');
+insert into roles (role_code, role_description) values (6, 'Grandfather');
+insert into roles (role_code, role_description) values (7, 'Grandmother');
