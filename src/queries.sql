@@ -5,7 +5,7 @@ create table individuals(
 	date_of_birth date,
 	date_of_death date
 );
-
+--not used
 create table relationships_types(
 	relationship_type_code serial primary key,
 	relationship_type_description varchar(40)
@@ -37,3 +37,5 @@ insert into roles (role_code, role_description) values (3, 'Father');
 insert into roles (role_code, role_description) values (5, 'Mother');
 insert into roles (role_code, role_description) values (6, 'Grandfather');
 insert into roles (role_code, role_description) values (7, 'Grandmother');
+insert into roles (role_code, role_description) values (8, 'Wife');
+insert into roles (role_code, role_description) values (9, 'Husband');

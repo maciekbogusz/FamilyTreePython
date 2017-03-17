@@ -5,14 +5,13 @@ Created on 07.03.2017
 '''
 import config
 from connect import connect
-from add_record import add_child, add_parents
-from _multiprocessing import Connection
+from add_record import *
 
 class family_member:
-#checker is set to distinguish if person is a child or a parent
-    def __init__(self, name, surname):
+    def __init__(self, name, surname, sex):
         self.name = name 
         self.surname = surname
+        self.sex = sex
                    
     def addDates(self, birthDate, deathDate):
         self.birthDate = birthDate
@@ -23,6 +22,9 @@ class family_member:
     
     def getNames(self):
         return self.name
+    
+    def getSex(self):
+        return self.sex
     
     def getSurname(self):
         return self.surname    
@@ -47,13 +49,13 @@ def ancestors(
         print result
     return [] 
             
-person1 = family_member("Maciej", "Kowalski")
+person1 = family_member("Maciej", "Kowalski", "Man")
 person1.addDates("1989-01-07", None)
 
-person2 = family_member("Taduesz", "Kowalski")
+person2 = family_member("Taduesz", "Kowalski", "Man")
 person2.addDates("01.01.1972",None)
 
-person3 = family_member("Katarzyna", "Kowalski")
+person3 = family_member("Katarzyna", "Kowalski", "Woman")
 person3.addDates("10.06.1974", None)
 
 
@@ -65,5 +67,6 @@ for key, value in dict_family.items():
     
 conn = connect()
 cursor = conn.cursor()
-add_child(person1, cursor)
+#add_child(person1, cursor)
+print select_person(person1.getNames(), cursor)
 conn.commit()

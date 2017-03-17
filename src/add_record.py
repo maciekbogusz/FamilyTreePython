@@ -15,7 +15,6 @@ def add_relationship(
         ):
     name = person.getNames()
     
-
 def add_parents(
         child,
         parent,
