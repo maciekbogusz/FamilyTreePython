@@ -17,10 +17,10 @@ person2.addDates("01.01.1972",None)
 person3 = Person("Katarzyna", "Kowalski")
 person3.addDates("10.06.1974", None)
 
-
 conn = connect()
 cursor = conn.cursor()
-add_child(person1, cursor)
+#add_child(person1, cursor)
+select_person(person2, cursor)
 conn.commit()
        
            

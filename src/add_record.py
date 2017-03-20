@@ -1,3 +1,5 @@
+from Tkconstants import LAST
+from person import Person
 def add_child(
         person,
         cursor
@@ -31,6 +33,9 @@ def select_person(
         person, 
         cursor
         ):
-    data = person.getNames()    
-    query = 'SELECT id FROM individuals WHERE name LIKE %s'
-    cursor.execute(query, data)
+    name = person.getName()
+    cursor.execute("SELECT * FROM individuals WHERE first_name LIKE %s;", (name,))
+    #cursor.execute(query)
+    rows = cursor.fetchall()
+    for row in rows:
+        print row
