@@ -20,7 +20,7 @@ person3.addDates("10.06.1974", None)
 conn = connect()
 cursor = conn.cursor()
 #add_child(person1, cursor)
-select_person(person2, cursor)
+print select_person(person1, cursor)
 conn.commit()
        
            

@@ -34,8 +34,7 @@ def select_person(
         cursor
         ):
     name = person.getName()
-    cursor.execute("SELECT * FROM individuals WHERE first_name LIKE %s;", (name,))
-    #cursor.execute(query)
+    cursor.execute("SELECT id FROM individuals WHERE first_name LIKE %s;", (name,))
     rows = cursor.fetchall()
-    for row in rows:
-        print row
+    idlist = [item[0] for item in rows]
+    return idlist
