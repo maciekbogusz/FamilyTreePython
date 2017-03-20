@@ -2,7 +2,7 @@ def add_child(
         person,
         cursor
         ):
-    name = person.getNames()
+    name = person.getName()
     surname = person.getSurname()
     birthdate = person.getDates()
     query =  "INSERT INTO individuals (id, first_name, last_name, date_of_birth) VALUES (nextval('primary_key_seq'),%s, %s, %s);"
