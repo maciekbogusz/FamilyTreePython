@@ -5,7 +5,7 @@ Created on 07.03.2017
 '''
 import config
 from connect import connect
-from add_record import add_child, select_person
+from add_record import add_child, select_person_id
 from person import Person
 
 person1 = Person('Maciej', 'Kowalski')
@@ -20,7 +20,7 @@ person3.addDates("10.06.1974", None)
 conn = connect()
 cursor = conn.cursor()
 #add_child(person1, cursor)
-print select_person(person1, cursor)
+print select_person_id(person1, cursor)
 conn.commit()
        
            

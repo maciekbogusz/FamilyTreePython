@@ -29,7 +29,7 @@ def add_parents(
     data = (name, surname, birthdate)
     cursor.execute(query, data)
     
-def select_person(
+def select_person_id(
         person, 
         cursor
         ):
