@@ -36,5 +36,4 @@ def select_person_id(
     name = person.getName()
     cursor.execute("SELECT id FROM individuals WHERE first_name LIKE %s;", (name,))
     rows = cursor.fetchall()
-    idlist = [item[0] for item in rows]
-    return idlist
+    return rows
