@@ -7,6 +7,11 @@ import config
 from connect import connect
 from add_record import add_child, select_person_id
 from person import Person
+from django.contrib.admin.templatetags.admin_list import items_for_result
+
+def display_list(elements): 
+    idlist = [item[0] for item in elements]
+    print idlist          
 
 person1 = Person('Maciej', 'Kowalski')
 person1.addDates("1989-01-07", None)
@@ -20,19 +25,6 @@ person3.addDates("10.06.1974", None)
 conn = connect()
 cursor = conn.cursor()
 #add_child(person1, cursor)
-print select_person_id(person1, cursor)
+person_id = select_person_id(person1, cursor)
+display_list(person_id)
 conn.commit()
-       
-           
-# def ancestors(
-#         family,
-#         person):
-#     if person in family:
-#         parents = family[person]
-#         result = parents
-#         for parent in parents:
-#                 result = result + ancestors(family, parent)
-#     return [] 
-            
-            
-
