@@ -1,6 +1,6 @@
 from Tkconstants import LAST
 from person import Person
-def add_child(
+def add_person(
         person,
         cursor
         ):
@@ -11,23 +11,18 @@ def add_child(
     data = (name, surname, birthdate)
     cursor.execute(query, data)
 
-def add_relationship(
-        person,
-        cursor      
-        ):
-    name = person.getNames()
-    
-def add_parents(
+def add_son(
         child,
-        parent,
+        parent1,
+        parent2, 
         cursor
         ):
-    name = parent.getNames()
-    surname = parent.getSurname()
-    birthdate = parent.getDates()
-    query =  "INSERT INTO family_member (id, name, surname, birth_date, child_id) VALUES (nextval('primary_key_seq'),%s, %s, 2);"
-    data = (name, surname, birthdate)
-    cursor.execute(query, data)
+    # role_id = 1
+    child = child
+    father = parent1
+    mother = parent2
+    query = "INSERT INTO relationships (relationship_id, individual_id, relationship_type_code, individual_1_role_code) VALUES (nextval('primary_key_seq'),%s, %s, %s);"
+    print parent1
     
 def select_person_id(
         person, 
